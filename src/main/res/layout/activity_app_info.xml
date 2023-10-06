@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.appcompat.widget.LinearLayoutCompat
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.appcompat.widget.LinearLayoutCompat xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -15,38 +14,38 @@
         android:layout_marginTop="8dp"
         android:text="App Info"
         android:textColor="@color/colorGreen"
-        android:textSize="16sp"/>
+        android:textSize="16sp" />
 
     <TextView
         android:id="@+id/sensorList_appInfo_name_tv"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="4dp"
-        android:textColor="@android:color/white"
-        android:text="Name: Unknown"/>
+        android:text="Name: Delta Sport Innovation "
+        android:textColor="@android:color/white" />
 
     <TextView
         android:id="@+id/sensorList_appInfo_version_tv"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="4dp"
-        android:textColor="@android:color/white"
-        android:text="Version: Unknown"/>
+        android:text="Version: 1.0.0"
+        android:textColor="@android:color/white" />
 
     <TextView
         android:id="@+id/sensorList_appInfo_company_tv"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="4dp"
-        android:textColor="@android:color/white"
-        android:text="Company: Unknown"/>
+        android:text="Company: Delta App"
+        android:textColor="@android:color/white" />
 
 
     <Button
-        android:layout_marginTop="4dp"
         android:id="@+id/buttonGet"
-        android:text="Get"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"/>
+        android:layout_height="wrap_content"
+        android:layout_marginTop="4dp"
+        android:text="Get" />
 
 </androidx.appcompat.widget.LinearLayoutCompat>

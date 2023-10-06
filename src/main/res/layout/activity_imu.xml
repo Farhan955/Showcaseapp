@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-              xmlns:tools="http://schemas.android.com/tools"
-              android:layout_width="match_parent"
-              android:layout_height="match_parent"
-              android:orientation="vertical"
-              android:padding="6dp">
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="6dp">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -17,7 +17,7 @@
             android:layout_height="wrap_content"
             android:layout_weight="2"
             android:text="Imu"
-            android:textSize="18sp"/>
+            android:textSize="18sp" />
 
     </LinearLayout>
 
@@ -32,36 +32,37 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="6dp"
-            tools:text="Serial: E5:92:291:30:21"/>
+            tools:text="Serial: E5:92:291:30:21" />
 
         <TextView
             android:id="@+id/connected_device_swVersion_textView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="6dp"
-            tools:text="Sw version: 0.10"/>
+            tools:text="Sw version: 0.10" />
 
     </LinearLayout>
 
     <RadioGroup
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="vertical"
-        android:layout_marginTop="10dp">
+        android:layout_marginTop="10dp"
+        android:orientation="vertical">
 
         <RadioButton
             android:id="@+id/imu6_radioBtn"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:checked="true"
-            android:text="Imu 6"/>
+            android:text="Imu 6" />
 
 
         <RadioButton
             android:id="@+id/imu9_radioBtn"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Imu 9"/>
+            android:text="Imu 9"
+            android:visibility="gone" />
 
     </RadioGroup>
 
@@ -76,13 +77,13 @@
         <androidx.appcompat.widget.SwitchCompat
             android:id="@+id/switchSubscription"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"/>
+            android:layout_height="wrap_content" />
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="10dp"
-            android:text="@string/subscribe"/>
+            android:text="@string/subscribe" />
 
     </LinearLayout>
 
@@ -90,23 +91,23 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
-        android:text="@string/rate"/>
+        android:text="@string/rate" />
 
     <Spinner
         android:id="@+id/spinner"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"/>
+        android:layout_height="wrap_content" />
 
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="@string/note_text"/>
+        android:text="@string/note_text" />
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
-        android:text="Linear Acceleration"/>
+        android:text="Linear Acceleration" />
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -121,7 +122,7 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:text="@string/x"
-            android:textSize="16sp"/>
+            android:textSize="16sp" />
 
         <TextView
             android:id="@+id/linearacc_y_axis_textView"
@@ -129,7 +130,7 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:text="@string/y"
-            android:textSize="16sp"/>
+            android:textSize="16sp" />
 
         <TextView
             android:id="@+id/linearacc_z_axis_textView"
@@ -137,7 +138,7 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:text="@string/z"
-            android:textSize="16sp"/>
+            android:textSize="16sp" />
 
     </LinearLayout>
 
@@ -146,7 +147,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
-        android:text="Gyro"/>
+        android:text="Gyro" />
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -161,7 +162,7 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:text="@string/x"
-            android:textSize="16sp"/>
+            android:textSize="16sp" />
 
         <TextView
             android:id="@+id/gyro_y_axis_textView"
@@ -169,7 +170,7 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:text="@string/y"
-            android:textSize="16sp"/>
+            android:textSize="16sp" />
 
         <TextView
             android:id="@+id/gyro_z_axis_textView"
@@ -177,7 +178,7 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:text="@string/z"
-            android:textSize="16sp"/>
+            android:textSize="16sp" />
 
     </LinearLayout>
 
@@ -185,7 +186,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
-        android:text="Magn"/>
+        android:text="Magn" />
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -200,7 +201,7 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:text="@string/x"
-            android:textSize="16sp"/>
+            android:textSize="16sp" />
 
         <TextView
             android:id="@+id/magn_y_axis_textView"
@@ -208,7 +209,7 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:text="@string/y"
-            android:textSize="16sp"/>
+            android:textSize="16sp" />
 
         <TextView
             android:id="@+id/magn_z_axis_textView"
@@ -216,7 +217,7 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:text="@string/z"
-            android:textSize="16sp"/>
+            android:textSize="16sp" />
 
     </LinearLayout>
 

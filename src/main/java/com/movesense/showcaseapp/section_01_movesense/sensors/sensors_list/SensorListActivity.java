@@ -69,7 +69,7 @@ public class SensorListActivity extends BaseActivity implements View.OnClickList
         sensorListItemModels.add(new SensorListItemModel(getString(R.string.app_info_name)));
         sensorListItemModels.add(new SensorListItemModel(getString(R.string.linear_acceleration_name)));
         sensorListItemModels.add(new SensorListItemModel(getString(R.string.led_name)));
-        sensorListItemModels.add(new SensorListItemModel(getString(R.string.temperature_name)));
+//        sensorListItemModels.add(new SensorListItemModel(getString(R.string.temperature_name)));
         sensorListItemModels.add(new SensorListItemModel(getString(R.string.heart_rate_name)));
         sensorListItemModels.add(new SensorListItemModel(getString(R.string.angular_velocity_name)));
         sensorListItemModels.add(new SensorListItemModel(getString(R.string.magnetic_field_name)));

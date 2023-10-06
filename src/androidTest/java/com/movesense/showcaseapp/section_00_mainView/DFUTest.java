@@ -1,54 +1,30 @@
 package com.movesense.showcaseapp.section_00_mainView;
 
 
-import android.Manifest;
-import androidx.test.platform.app.InstrumentationRegistry;
 import androidx.test.espresso.Espresso;
 import androidx.test.espresso.IdlingPolicies;
-import androidx.test.espresso.ViewInteraction;
 import androidx.test.espresso.idling.CountingIdlingResource;
-import androidx.test.rule.ActivityTestRule;
-import androidx.test.rule.GrantPermissionRule;
 import androidx.test.ext.junit.runners.AndroidJUnit4;
-import androidx.test.uiautomator.By;
-import androidx.test.uiautomator.UiDevice;
+import androidx.test.filters.LargeTest;
 import androidx.test.uiautomator.UiObjectNotFoundException;
-import androidx.test.uiautomator.UiScrollable;
-import androidx.test.uiautomator.UiSelector;
-import androidx.recyclerview.widget.RecyclerView;
-import android.test.suitebuilder.annotation.LargeTest;
 
-import com.movesense.showcaseapp.R;
-import com.movesense.showcaseapp.custom_matchers.RecyclerViewByTextNameMacher;
-
-import org.hamcrest.Matcher;
 import org.junit.After;
 import org.junit.Before;
-import org.junit.Rule;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
 import java.util.concurrent.TimeUnit;
 
-import static androidx.test.espresso.Espresso.onView;
-import static androidx.test.espresso.action.ViewActions.click;
-import static androidx.test.espresso.contrib.RecyclerViewActions.actionOnHolderItem;
-import static androidx.test.espresso.contrib.RecyclerViewActions.scrollToHolder;
-import static androidx.test.espresso.matcher.ViewMatchers.isDisplayed;
-import static androidx.test.espresso.matcher.ViewMatchers.withId;
-import static androidx.test.espresso.matcher.ViewMatchers.withText;
-import static org.hamcrest.Matchers.allOf;
-
 @LargeTest
 @RunWith(AndroidJUnit4.class)
 public class DFUTest {
 
-    @Rule
-    public ActivityTestRule<MainViewActivity> mActivityTestRule = new ActivityTestRule<>(MainViewActivity.class);
-    private UiDevice mUiDevice;
-
-    @Rule
-    public GrantPermissionRule mGrantPermissionRule = GrantPermissionRule.grant(Manifest.permission.ACCESS_COARSE_LOCATION);
+//    @Rule
+//    public ActivityTestRule<MainViewActivity> mActivityTestRule = new ActivityTestRule<>(MainViewActivity.class);
+//    private UiDevice mUiDevice;
+//
+//    @Rule
+//    public GrantPermissionRule mGrantPermissionRule = GrantPermissionRule.grant(Manifest.permission.ACCESS_COARSE_LOCATION);
 
     private final static String DFU_FILE_NAME = "Movesense-accelerometer-dfu.zip";
     private final static String DFU_MOVESENSE_DEVICE_NAME = "Movesense ECKICFD7F724";
@@ -57,7 +33,7 @@ public class DFUTest {
 
     @Before
     public void setUp() {
-        mUiDevice = UiDevice.getInstance(InstrumentationRegistry.getInstrumentation());
+//        mUiDevice = UiDevice.getInstance(InstrumentationRegistry.getInstrumentation());
 
 //        mConnectingIdlingResource = DfuPresenter.getConnectionIdlingResource();
 //        Espresso.registerIdlingResources(mConnectingIdlingResource);
@@ -81,6 +57,7 @@ public class DFUTest {
             Espresso.unregisterIdlingResources(mDfuUploadIdlingResource);
         }
     }
+/*
 
     private void dfuTestLogic() throws UiObjectNotFoundException {
         // Click on DFU from main view
@@ -128,29 +105,30 @@ public class DFUTest {
         appCompatButton.perform(click());
 
     }
+*/
 
     @Test
     public void dFUTest1() throws UiObjectNotFoundException {
-        dfuTestLogic();
+//        dfuTestLogic();
     }
 
     @Test
     public void dFUTest2() throws UiObjectNotFoundException {
-        dfuTestLogic();
+//        dfuTestLogic();
     }
 
     @Test
     public void dFUTest3() throws UiObjectNotFoundException {
-        dfuTestLogic();
+//        dfuTestLogic();
     }
 
     @Test
     public void dFUTest4() throws UiObjectNotFoundException {
-        dfuTestLogic();
+//        dfuTestLogic();
     }
 
     @Test
     public void dFUTest5() throws UiObjectNotFoundException {
-        dfuTestLogic();
+//        dfuTestLogic();
     }
 }

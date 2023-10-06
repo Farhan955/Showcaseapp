@@ -1,11 +1,23 @@
 package com.movesense.showcaseapp.logs;
 
+import android.app.AlertDialog;
+import android.content.Context;
+import android.content.DialogInterface;
+import android.content.Intent;
+import android.net.Uri;
 import android.util.SparseArray;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.webkit.MimeTypeMap;
 import android.widget.BaseAdapter;
 import android.widget.TextView;
+import android.widget.Toast;
+
+import androidx.core.content.FileProvider;
+
+import com.movesense.showcaseapp.BuildConfig;
+import com.movesense.showcaseapp.google_drive.SendLogsToGoogleDriveActivity;
 
 import java.io.File;
 import java.util.List;
@@ -49,10 +61,75 @@ public class LogsListAdapter extends BaseAdapter {
         textView.setText(fileItem.getName());
 
 
+        textView.setOnLongClickListener(new View.OnLongClickListener() {
+            @Override
+            public boolean onLongClick(View view) {
+
+                new AlertDialog.Builder(parent.getContext())
+                        .setTitle("Alert!")
+                        .setMessage("Do you want to delete the file?")
+                        .setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialogInterface, int i) {
+                                fileList.remove(position);
+                                fileItem.delete();
+                                notifyDataSetChanged();
+                            }
+                        })
+                        .setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialogInterface, int i) {
+
+                                dialogInterface.dismiss();
+                            }
+                        })
+                        .show();
+
+                return false;
+            }
+        });
+
+        textView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                Context context = parent.getContext();
+                Toast.makeText(context, "Sending 1 " , Toast.LENGTH_SHORT).show();
+
+                try {
+                    final File clickedFile = fileList.get(position);
+                    Uri uri = FileProvider.getUriForFile(context,
+                            BuildConfig.APPLICATION_ID, clickedFile);
+
+                    Intent shareIntent = new Intent(Intent.ACTION_SEND);
+//        shareIntent.setType("application/vnd.openxmlformats-officedocument.spreadsheetml.sheet");
+                    shareIntent.setType(getMimeType(clickedFile.getName()));
+                    shareIntent.putExtra(Intent.EXTRA_SUBJECT, "App");
+                    shareIntent.putExtra(Intent.EXTRA_STREAM, uri);
+                    context.startActivity(Intent.createChooser(shareIntent, "Share"));
+
+                } catch (Exception e) {
+
+                    Toast.makeText(context, "Error: " + e.getMessage(), Toast.LENGTH_SHORT).show();
+                }
+            }
+        });
+
         return convertView;
     }
 
-    private static class  ViewHolder {
+    private String getMimeType(String url) {
+        String parts[] = url.split("\\.");
+        String extension = parts[parts.length - 1];
+        String type = null;
+        if (extension != null) {
+            MimeTypeMap mime = MimeTypeMap.getSingleton();
+            type = mime.getMimeTypeFromExtension(extension);
+        }
+        return type;
+    }
+
+    private static class ViewHolder {
 
         @SuppressWarnings("unchecked")
         public static <T extends View> T get(View view, int id) {

@@ -34,7 +34,7 @@ public class AppInfoActivity extends BaseActivity {
         setContentView(R.layout.activity_app_info);
         ButterKnife.bind(this);
 
-        mSensorListAppInfoNameTv.setText("Name: Loading");
+   /*     mSensorListAppInfoNameTv.setText("Name: Loading");
         mSensorListAppInfoVersionTv.setText("Version: Loading");
         mSensorListAppInfoCompanyTv.setText("Company: Loading");
 
@@ -59,10 +59,10 @@ public class AppInfoActivity extends BaseActivity {
                         Log.e(TAG, "Info onError: ", e);
 
                     }
-                });
+                });*/
     }
 
-    @OnClick(R.id.buttonGet)
+/*    @OnClick(R.id.buttonGet)
     public void onViewClicked() {
 
         mSensorListAppInfoNameTv.setText("Name: Loading");
@@ -91,5 +91,5 @@ public class AppInfoActivity extends BaseActivity {
 
                     }
                 });
-    }
+    }*/
 }

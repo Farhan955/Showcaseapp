@@ -152,16 +152,26 @@ public class SendLogsToGoogleDriveActivity extends AppCompatActivity implements 
     @OnItemClick(R.id.logsFileListView)
     public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
         // Show dialog for open / send file
-        final File clickedFile = logsFileList.get(position);
-        Uri uri = FileProvider.getUriForFile(SendLogsToGoogleDriveActivity.this,
-                BuildConfig.APPLICATION_ID, clickedFile);
+/*        Toast.makeText(this, "Sending0 ", Toast.LENGTH_SHORT).show();
 
-        Intent shareIntent = new Intent(Intent.ACTION_SEND);
+        try {
+            final File clickedFile = logsFileList.get(position);
+            fileToSend = clickedFile;
+
+            Uri uri = FileProvider.getUriForFile(SendLogsToGoogleDriveActivity.this,
+                    BuildConfig.APPLICATION_ID, clickedFile);
+
+            Intent shareIntent = new Intent(Intent.ACTION_SEND);
 //        shareIntent.setType("application/vnd.openxmlformats-officedocument.spreadsheetml.sheet");
-        shareIntent.setType(getMimeType(fileToSend.getName()));
-        shareIntent.putExtra(Intent.EXTRA_SUBJECT, "App");
-        shareIntent.putExtra(Intent.EXTRA_STREAM, uri);
-        startActivity(Intent.createChooser(shareIntent, "Share"));
+            shareIntent.setType(getMimeType(fileToSend.getName()));
+            shareIntent.putExtra(Intent.EXTRA_SUBJECT, "App");
+            shareIntent.putExtra(Intent.EXTRA_STREAM, uri);
+            startActivity(Intent.createChooser(shareIntent, "Share"));
+
+        } catch (Exception e) {
+
+            Toast.makeText(this, "Error: " + e.getMessage(), Toast.LENGTH_SHORT).show();
+        }*/
 
 /*
         new AlertDialog.Builder(this)

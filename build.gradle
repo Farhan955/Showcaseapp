@@ -102,6 +102,7 @@ dependencies {
     implementation(name: 'mdslib', version: '3.15.0(1)-release', ext: 'aar')
     // ButterKnife
     implementation 'com.jakewharton:butterknife:10.2.1'
+    androidTestImplementation project(path: ':')
     annotationProcessor 'com.jakewharton:butterknife-compiler:10.2.1'
     // GraphView
     implementation 'com.github.PhilJay:MPAndroidChart:v3.0.3'
