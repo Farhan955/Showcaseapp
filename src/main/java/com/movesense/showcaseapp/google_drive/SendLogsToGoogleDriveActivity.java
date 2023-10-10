@@ -5,23 +5,14 @@ import android.accounts.AccountManager;
 import android.app.Dialog;
 import android.app.ProgressDialog;
 import android.content.Context;
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.IntentSender;
 import android.content.SharedPreferences;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
-import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.os.Environment;
-
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
-import androidx.core.content.FileProvider;
-import androidx.appcompat.app.AlertDialog;
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -31,6 +22,10 @@ import android.widget.AdapterView;
 import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.appcompat.app.AppCompatActivity;
 
 import com.google.android.gms.common.ConnectionResult;
 import com.google.android.gms.common.GoogleApiAvailability;
@@ -50,7 +45,6 @@ import com.google.api.client.json.jackson2.JacksonFactory;
 import com.google.api.client.util.ExponentialBackOff;
 import com.google.api.services.drive.DriveScopes;
 import com.google.api.services.drive.model.FileList;
-import com.movesense.showcaseapp.BuildConfig;
 import com.movesense.showcaseapp.R;
 import com.movesense.showcaseapp.logs.LogsListAdapter;
 
@@ -152,55 +146,55 @@ public class SendLogsToGoogleDriveActivity extends AppCompatActivity implements 
     @OnItemClick(R.id.logsFileListView)
     public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
         // Show dialog for open / send file
-/*        Toast.makeText(this, "Sending0 ", Toast.LENGTH_SHORT).show();
+        /*        Toast.makeText(this, "Sending0 ", Toast.LENGTH_SHORT).show();
 
-        try {
-            final File clickedFile = logsFileList.get(position);
-            fileToSend = clickedFile;
+                try {
+                    final File clickedFile = logsFileList.get(position);
+                    fileToSend = clickedFile;
 
-            Uri uri = FileProvider.getUriForFile(SendLogsToGoogleDriveActivity.this,
-                    BuildConfig.APPLICATION_ID, clickedFile);
+                    Uri uri = FileProvider.getUriForFile(SendLogsToGoogleDriveActivity.this,
+                            BuildConfig.APPLICATION_ID, clickedFile);
 
-            Intent shareIntent = new Intent(Intent.ACTION_SEND);
-//        shareIntent.setType("application/vnd.openxmlformats-officedocument.spreadsheetml.sheet");
-            shareIntent.setType(getMimeType(fileToSend.getName()));
-            shareIntent.putExtra(Intent.EXTRA_SUBJECT, "App");
-            shareIntent.putExtra(Intent.EXTRA_STREAM, uri);
-            startActivity(Intent.createChooser(shareIntent, "Share"));
+                    Intent shareIntent = new Intent(Intent.ACTION_SEND);
+        //        shareIntent.setType("application/vnd.openxmlformats-officedocument.spreadsheetml.sheet");
+                    shareIntent.setType(getMimeType(fileToSend.getName()));
+                    shareIntent.putExtra(Intent.EXTRA_SUBJECT, "App");
+                    shareIntent.putExtra(Intent.EXTRA_STREAM, uri);
+                    startActivity(Intent.createChooser(shareIntent, "Share"));
 
-        } catch (Exception e) {
+                } catch (Exception e) {
 
-            Toast.makeText(this, "Error: " + e.getMessage(), Toast.LENGTH_SHORT).show();
-        }*/
+                    Toast.makeText(this, "Error: " + e.getMessage(), Toast.LENGTH_SHORT).show();
+                }*/
 
-/*
-        new AlertDialog.Builder(this)
-                .setTitle("Choose a file action")
-                .setItems(new CharSequence[]{"Open file", "Send file to Google Drive"},
-                        new DialogInterface.OnClickListener() {
-                            @Override
-                            public void onClick(DialogInterface dialog, int which) {
-                                switch (which) {
-                                    case 0:
-                                        // Open File
-                                        Intent intent = new Intent();
-                                        intent.setAction(android.content.Intent.ACTION_VIEW);
-                                        intent.addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION);
-                                        Uri uri = FileProvider.getUriForFile(SendLogsToGoogleDriveActivity.this,
-                                                BuildConfig.APPLICATION_ID, clickedFile);
-                                        intent.setDataAndType(uri, getMimeType(clickedFile.getName()));
-                                        startActivity(intent);
-                                        break;
+        /*
+                new AlertDialog.Builder(this)
+                        .setTitle("Choose a file action")
+                        .setItems(new CharSequence[]{"Open file", "Send file to Google Drive"},
+                                new DialogInterface.OnClickListener() {
+                                    @Override
+                                    public void onClick(DialogInterface dialog, int which) {
+                                        switch (which) {
+                                            case 0:
+                                                // Open File
+                                                Intent intent = new Intent();
+                                                intent.setAction(android.content.Intent.ACTION_VIEW);
+                                                intent.addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION);
+                                                Uri uri = FileProvider.getUriForFile(SendLogsToGoogleDriveActivity.this,
+                                                        BuildConfig.APPLICATION_ID, clickedFile);
+                                                intent.setDataAndType(uri, getMimeType(clickedFile.getName()));
+                                                startActivity(intent);
+                                                break;
 
-                                    case 1:
-                                        // Send file to Google Drive
-                                        fileToSend = clickedFile;
-                                        getResultsFromApi();
-                                        break;
-                                }
-                            }
-                        })
-                .show();*/
+                                            case 1:
+                                                // Send file to Google Drive
+                                                fileToSend = clickedFile;
+                                                getResultsFromApi();
+                                                break;
+                                        }
+                                    }
+                                })
+                        .show();*/
 
     }
 

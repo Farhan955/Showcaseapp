@@ -193,7 +193,8 @@ public class LinearAccelerationTestActivity extends BaseActivity implements BleM
                                 final int sampleRate = Integer.parseInt(rate);
                                 final float sampleInterval = 1000.0f / (float)sampleRate;
 
-                                mCsvLogger.appendHeader("Timestamp (ms),X: (m/s^2),Y: (m/s^2),Z: (m/s^2)");
+//                                mCsvLogger.appendHeader("Timestamp (ms),X: (m/s^2),Y: (m/s^2),Z: (m/s^2)");
+                                mCsvLogger.appendHeader("Timestamp, X, Y, Z");
 
                                 LinearAcceleration.Array arrayData = null;
                                 for (int i=0; i<linearAccelerationData.body.array.length; i++)
@@ -201,7 +202,7 @@ public class LinearAccelerationTestActivity extends BaseActivity implements BleM
                                     arrayData = linearAccelerationData.body.array[i];
 
                                     mCsvLogger.appendLine(String.format(Locale.getDefault(),
-                                            "%d,%.6f,%.6f,%.6f, ",
+                                            "%d,%.6f,%.6f,%.6f ",
                                             linearAccelerationData.body.timestamp + Math.round(sampleInterval * i),
                                             arrayData.x, arrayData.y, arrayData.z));
                                 }
