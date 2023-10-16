@@ -190,23 +190,24 @@ public class MagneticFieldTestActivity extends BaseActivity implements BleManage
                                 final int sampleRate = Integer.parseInt(rate);
                                 final float sampleInterval = 1000.0f / (float)sampleRate;
 
-                                mCsvLogger.appendHeader("Timestamp (ms),X: (microtesla),Y: (microtesla),Z: (microtesla)");
+//                                mCsvLogger.appendHeader("Timestamp (ms),X: (microtesla),Y: (microtesla),Z: (microtesla)");
+                                mCsvLogger.appendHeader("timestamp,x,y,z");
 
                                 MagneticField.Array arrayData = null;
                                 for (int i=0; i<magneticField.body.array.length; i++) {
                                     arrayData = magneticField.body.array[i];
 
-                                    mCsvLogger.appendLine(String.format(Locale.getDefault(),
-                                            "%d,%.6f,%.6f,%.6f, ",
+                                    mCsvLogger.appendLine(String.format(Locale.US,
+                                            "%d,%.6f,%.6f,%.6f ",
                                             magneticField.body.timestamp + Math.round(sampleInterval * i),
                                             arrayData.x, arrayData.y, arrayData.z));
                                 }
 
-                                xAxisTextView.setText(String.format(Locale.getDefault(),
+                                xAxisTextView.setText(String.format(Locale.US,
                                         "x: %.6f", arrayData.x));
-                                yAxisTextView.setText(String.format(Locale.getDefault(),
+                                yAxisTextView.setText(String.format(Locale.US,
                                         "y: %.6f", arrayData.y));
-                                zAxisTextView.setText(String.format(Locale.getDefault(),
+                                zAxisTextView.setText(String.format(Locale.US,
                                         "z: %.6f", arrayData.z));
 
                                 mLineData.addEntry(new Entry(magneticField.body.timestamp / 100, (float) arrayData.x), 0);

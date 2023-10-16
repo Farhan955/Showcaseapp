@@ -232,10 +232,10 @@ public class EcgActivityGraphView extends BaseActivity implements BleManager.IBl
 
                             if (heartRate != null) {
 
-                                mHeartRateTextView.setText(String.format(Locale.getDefault(),
+                                mHeartRateTextView.setText(String.format(Locale.US,
                                         "Heart rate: %.0f [bpm]", (60.0 / heartRate.body.rrData[0]) * 1000));
 
-                                mRrTextView.setText(String.format(Locale.getDefault(),
+                                mRrTextView.setText(String.format(Locale.US,
                                         "Beat interval: %d [ms]", heartRate.body.rrData[0]));
                             }
                         }
@@ -267,10 +267,11 @@ public class EcgActivityGraphView extends BaseActivity implements BleManager.IBl
 
                                 for (int i = 0; i < sampleCount; i++) {
                                     try {
-                                        mCsvLogger.appendHeader("Timestamp,Count");
+//                                        mCsvLogger.appendHeader("Timestamp,Count");
+                                        mCsvLogger.appendHeader("timestamp,sample");
 
                                         if (ecgModel.mBody.timestamp != null) {
-                                            mCsvLogger.appendLine(String.format(Locale.getDefault(),
+                                            mCsvLogger.appendLine(String.format(Locale.US,
                                                     "%d,%s", ecgModel.mBody.timestamp + Math.round(sampleInterval * i),
                                                     String.valueOf(ecgSamples[i])));
                                         } else {

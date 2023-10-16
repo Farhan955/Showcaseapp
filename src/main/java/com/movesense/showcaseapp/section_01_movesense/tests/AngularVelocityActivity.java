@@ -189,20 +189,22 @@ public class AngularVelocityActivity extends BaseActivity implements BleManager.
                                 final int sampleRate = Integer.parseInt(rate);
                                 final float sampleInterval = 1000.0f / (float)sampleRate;
 
-                                mCsvLogger.appendHeader("Timestamp (ms),X: (degree per second),Y: (degree per second),Z: (degree per second)");
+//                                mCsvLogger.appendHeader("Timestamp (ms),X: (degree per second),Y: (degree per second),Z: (degree per second)");
+                                mCsvLogger.appendHeader("timestamp,x,y,z");
+
                                 AngularVelocity.Array arrayData = null;
                                 for (int i=0; i<angularVelocity.body.array.length; i++) {
                                     arrayData = angularVelocity.body.array[i];
 
-                                    mCsvLogger.appendLine(String.format(Locale.getDefault(),
-                                            "%d,%.6f,%.6f,%.6f, ", angularVelocity.body.timestamp + Math.round(sampleInterval * i),
+                                    mCsvLogger.appendLine(String.format(Locale.US,
+                                            "%d,%.6f,%.6f,%.6f ", angularVelocity.body.timestamp + Math.round(sampleInterval * i),
                                             arrayData.x, arrayData.y, arrayData.z));
                                 }
-                                xAxisTextView.setText(String.format(Locale.getDefault(),
+                                xAxisTextView.setText(String.format(Locale.US,
                                         "x: %.6f", arrayData.x));
-                                yAxisTextView.setText(String.format(Locale.getDefault(),
+                                yAxisTextView.setText(String.format(Locale.US,
                                         "y: %.6f", arrayData.y));
-                                zAxisTextView.setText(String.format(Locale.getDefault(),
+                                zAxisTextView.setText(String.format(Locale.US,
                                         "z: %.6f", arrayData.z));
 
                                 mLineData.addEntry(new Entry(angularVelocity.body.timestamp / 100, (float) arrayData.x), 0);

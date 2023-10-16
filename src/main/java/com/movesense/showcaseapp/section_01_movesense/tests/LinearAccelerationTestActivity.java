@@ -3,9 +3,11 @@ package com.movesense.showcaseapp.section_01_movesense.tests;
 
 import android.graphics.Color;
 import android.os.Bundle;
+
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.widget.SwitchCompat;
+
 import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
@@ -59,14 +61,22 @@ public class LinearAccelerationTestActivity extends BaseActivity implements BleM
     private MdsSubscription mdsSubscription;
 
 
-    @BindView(R.id.switchSubscription) SwitchCompat switchSubscription;
-    @BindView(R.id.spinner) Spinner spinner;
-    @BindView(R.id.x_axis_textView) TextView xAxisTextView;
-    @BindView(R.id.y_axis_textView) TextView yAxisTextView;
-    @BindView(R.id.z_axis_textView) TextView zAxisTextView;
-    @BindView(R.id.connected_device_name_textView) TextView mConnectedDeviceNameTextView;
-    @BindView(R.id.connected_device_swVersion_textView) TextView mConnectedDeviceSwVersionTextView;
-    @BindView(R.id.linearAcc_lineChart) LineChart mChart;
+    @BindView(R.id.switchSubscription)
+    SwitchCompat switchSubscription;
+    @BindView(R.id.spinner)
+    Spinner spinner;
+    @BindView(R.id.x_axis_textView)
+    TextView xAxisTextView;
+    @BindView(R.id.y_axis_textView)
+    TextView yAxisTextView;
+    @BindView(R.id.z_axis_textView)
+    TextView zAxisTextView;
+    @BindView(R.id.connected_device_name_textView)
+    TextView mConnectedDeviceNameTextView;
+    @BindView(R.id.connected_device_swVersion_textView)
+    TextView mConnectedDeviceSwVersionTextView;
+    @BindView(R.id.linearAcc_lineChart)
+    LineChart mChart;
     private AlertDialog alertDialog;
     private CsvLogger mCsvLogger;
     private boolean isLogSaved = false;
@@ -191,26 +201,25 @@ public class LinearAccelerationTestActivity extends BaseActivity implements BleM
 
                             if (linearAccelerationData != null) {
                                 final int sampleRate = Integer.parseInt(rate);
-                                final float sampleInterval = 1000.0f / (float)sampleRate;
+                                final float sampleInterval = 1000.0f / (float) sampleRate;
 
 //                                mCsvLogger.appendHeader("Timestamp (ms),X: (m/s^2),Y: (m/s^2),Z: (m/s^2)");
-                                mCsvLogger.appendHeader("Timestamp, X, Y, Z");
+                                mCsvLogger.appendHeader("timestamp,x,y,z");
 
                                 LinearAcceleration.Array arrayData = null;
-                                for (int i=0; i<linearAccelerationData.body.array.length; i++)
-                                {
+                                for (int i = 0; i < linearAccelerationData.body.array.length; i++) {
                                     arrayData = linearAccelerationData.body.array[i];
 
-                                    mCsvLogger.appendLine(String.format(Locale.getDefault(),
+                                    mCsvLogger.appendLine(String.format(Locale.US,
                                             "%d,%.6f,%.6f,%.6f ",
                                             linearAccelerationData.body.timestamp + Math.round(sampleInterval * i),
                                             arrayData.x, arrayData.y, arrayData.z));
                                 }
-                                xAxisTextView.setText(String.format(Locale.getDefault(),
+                                xAxisTextView.setText(String.format(Locale.US,
                                         "x: %.6f", arrayData.x));
-                                yAxisTextView.setText(String.format(Locale.getDefault(),
+                                yAxisTextView.setText(String.format(Locale.US,
                                         "y: %.6f", arrayData.y));
-                                zAxisTextView.setText(String.format(Locale.getDefault(),
+                                zAxisTextView.setText(String.format(Locale.US,
                                         "z: %.6f", arrayData.z));
 
                                 mLineData.addEntry(new Entry(linearAccelerationData.body.timestamp / 100, (float) arrayData.x), 0);

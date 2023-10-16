@@ -158,10 +158,8 @@ public class ImuActivity extends BaseActivity implements BleManager.IBleConnecti
 
             mCsvLogger.checkRuntimeWriteExternalStoragePermission(this, this);
 
-            // Same header for all IMU variants
-            mCsvLogger.appendHeader("Timestamp,AccX,AccY,AccZ,GyroX,GyroY,GyroZ,MagnX,MagnY,MagnZ");
+            mCsvLogger.appendHeader("timestamp,x,y,z,gx,gy,gz");
 
-            // Somewhat ok guess for ms per sample (used on first update)
             final int initialMsPerSample = 1000/Integer.valueOf(rate);
 
             mMdsSubscription = Mds.builder().build(this).subscribe(URI_EVENTLISTENER,
@@ -179,18 +177,18 @@ public class ImuActivity extends BaseActivity implements BleManager.IBleConnecti
                                 diffTs = initialMsPerSample * imuModel.getBody().getArrayAcc().length;
                             }
 
-                            mLinearaccXAxisTextView.setText(String.format(Locale.getDefault(), "x: %.6f", imuModel.getBody().getArrayAcc()[0].getX()));
-                            mLinearaccYAxisTextView.setText(String.format(Locale.getDefault(), "y: %.6f", imuModel.getBody().getArrayAcc()[0].getY()));
-                            mLinearaccZAxisTextView.setText(String.format(Locale.getDefault(), "z: %.6f", imuModel.getBody().getArrayAcc()[0].getZ()));
+                            mLinearaccXAxisTextView.setText(String.format(Locale.US, "x: %.6f", imuModel.getBody().getArrayAcc()[0].getX()));
+                            mLinearaccYAxisTextView.setText(String.format(Locale.US, "y: %.6f", imuModel.getBody().getArrayAcc()[0].getY()));
+                            mLinearaccZAxisTextView.setText(String.format(Locale.US, "z: %.6f", imuModel.getBody().getArrayAcc()[0].getZ()));
 
-                            mGyroXAxisTextView.setText(String.format(Locale.getDefault(), "x: %.6f", imuModel.getBody().getArrayGyro()[0].getX()));
-                            mGyroYAxisTextView.setText(String.format(Locale.getDefault(), "y: %.6f", imuModel.getBody().getArrayGyro()[0].getY()));
-                            mGyroZAxisTextView.setText(String.format(Locale.getDefault(), "z: %.6f", imuModel.getBody().getArrayGyro()[0].getZ()));
+                            mGyroXAxisTextView.setText(String.format(Locale.US, "x: %.6f", imuModel.getBody().getArrayGyro()[0].getX()));
+                            mGyroYAxisTextView.setText(String.format(Locale.US, "y: %.6f", imuModel.getBody().getArrayGyro()[0].getY()));
+                            mGyroZAxisTextView.setText(String.format(Locale.US, "z: %.6f", imuModel.getBody().getArrayGyro()[0].getZ()));
 
                             if (imuModel.getBody().getArrayMagnl() != null) {
-                                mMagnXAxisTextView.setText(String.format(Locale.getDefault(), "x: %.6f", imuModel.getBody().getArrayMagnl()[0].getX()));
-                                mMagnYAxisTextView.setText(String.format(Locale.getDefault(), "y: %.6f", imuModel.getBody().getArrayMagnl()[0].getY()));
-                                mMagnZAxisTextView.setText(String.format(Locale.getDefault(), "z: %.6f", imuModel.getBody().getArrayMagnl()[0].getZ()));
+                                mMagnXAxisTextView.setText(String.format(Locale.US, "x: %.6f", imuModel.getBody().getArrayMagnl()[0].getX()));
+                                mMagnYAxisTextView.setText(String.format(Locale.US, "y: %.6f", imuModel.getBody().getArrayMagnl()[0].getY()));
+                                mMagnZAxisTextView.setText(String.format(Locale.US, "z: %.6f", imuModel.getBody().getArrayMagnl()[0].getZ()));
                             }
 
                             int len = imuModel.getBody().getArrayAcc().length;
@@ -203,7 +201,7 @@ public class ImuActivity extends BaseActivity implements BleManager.IBleConnecti
                                 if (SELECTED_PATH.equals(IMU6_PATH))
                                 {
                                     // IMU6
-                                    mCsvLogger.appendLine(String.format(Locale.getDefault(),
+                                    mCsvLogger.appendLine(String.format(Locale.US,
                                             "%d,%.6f,%.6f,%.6f,%.6f,%.6f,%.6f",
                                             timestamp,
                                             imuModel.getBody().getArrayAcc()[i].getX(),
@@ -216,7 +214,7 @@ public class ImuActivity extends BaseActivity implements BleManager.IBleConnecti
                                 else if (SELECTED_PATH.equals(IMU9_PATH))
                                 {
                                     // IMU9
-                                    mCsvLogger.appendLine(String.format(Locale.getDefault(),
+                                    mCsvLogger.appendLine(String.format(Locale.US,
                                             "%d,%.6f,%.6f,%.6f,%.6f,%.6f,%.6f,%.6f,%.6f,%.6f",
                                             timestamp,
                                             imuModel.getBody().getArrayAcc()[i].getX(),

@@ -107,15 +107,17 @@ public class HeartRateTestActivity extends BaseActivity implements BleManager.IB
                             HeartRate heartRate = new Gson().fromJson(data, HeartRate.class);
 
                             if (heartRate != null) {
-                                mHeartRateRrValueTextView.setText(String.format(Locale.getDefault(),
+                                mHeartRateRrValueTextView.setText(String.format(Locale.US,
                                         "RR [ms]: %d", heartRate.body.rrData[0]));
 
-                                mHeartRateBpmValueTextView.setText(String.format(Locale.getDefault(),
+                                mHeartRateBpmValueTextView.setText(String.format(Locale.US,
                                         "Beat interval [bpm]: %.2f", heartRate.body.average));
 
-                                mCsvLogger.appendHeader("Timestamp,HR: (Beats per minute), RR: (ms)");
+//                                mCsvLogger.appendHeader("Timestamp,HR: (Beats per minute), RR: (ms)");
 
-                                mCsvLogger.appendLine(String.format(Locale.getDefault(),
+                                mCsvLogger.appendHeader("average,rrData");
+
+                                mCsvLogger.appendLine(String.format(Locale.US,
                                         "%d,%.2f,%d", timestamp,heartRate.body.average, heartRate.body.rrData[0]));
                             }
                         }
